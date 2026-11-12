@@ -1,0 +1,505 @@
+{
+  "$defs": {
+    "Best": {
+      "additionalProperties": false,
+      "properties": {
+        "stage": {
+          "maximum": 1000000000,
+          "minimum": 0,
+          "title": "Stage",
+          "type": "integer"
+        },
+        "level": {
+          "maximum": 1000000000,
+          "minimum": 0,
+          "title": "Level",
+          "type": "integer"
+        },
+        "time": {
+          "maximum": 1e+150,
+          "minimum": 0,
+          "title": "Time",
+          "type": "number"
+        }
+      },
+      "required": [
+        "stage",
+        "level",
+        "time"
+      ],
+      "title": "Best",
+      "type": "object"
+    },
+    "Camp": {
+      "additionalProperties": false,
+      "properties": {
+        "whet": {
+          "maximum": 500,
+          "minimum": 0,
+          "title": "Whet",
+          "type": "integer"
+        },
+        "dress": {
+          "maximum": 500,
+          "minimum": 0,
+          "title": "Dress",
+          "type": "integer"
+        },
+        "oil": {
+          "maximum": 500,
+          "minimum": 0,
+          "title": "Oil",
+          "type": "integer"
+        },
+        "tonic": {
+          "maximum": 500,
+          "minimum": 0,
+          "title": "Tonic",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "whet",
+        "dress",
+        "oil",
+        "tonic"
+      ],
+      "title": "Camp",
+      "type": "object"
+    },
+    "Item": {
+      "additionalProperties": false,
+      "properties": {
+        "slot": {
+          "enum": [
+            "weapon",
+            "armour",
+            "trinket"
+          ],
+          "title": "Slot",
+          "type": "string"
+        },
+        "g": {
+          "maximum": 3,
+          "minimum": 0,
+          "title": "G",
+          "type": "integer"
+        },
+        "pow": {
+          "maximum": 1e+150,
+          "minimum": 0,
+          "title": "Pow",
+          "type": "number"
+        },
+        "name": {
+          "maxLength": 160,
+          "title": "Name",
+          "type": "string"
+        },
+        "sp": {
+          "anyOf": [
+            {
+              "enum": [
+                "haste",
+                "cdr",
+                "leech",
+                "ward",
+                "silver",
+                "crit"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sp"
+        },
+        "spT": {
+          "anyOf": [
+            {
+              "maxLength": 160,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Spt"
+        }
+      },
+      "required": [
+        "slot",
+        "g",
+        "pow",
+        "name"
+      ],
+      "title": "Item",
+      "type": "object"
+    },
+    "Player": {
+      "additionalProperties": false,
+      "properties": {
+        "embers": {
+          "maximum": 1000000000,
+          "minimum": 0,
+          "title": "Embers",
+          "type": "integer"
+        },
+        "boons": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "maxProperties": 10,
+          "title": "Boons",
+          "type": "object"
+        },
+        "unlocked": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "maxProperties": 6,
+          "title": "Unlocked",
+          "type": "object"
+        },
+        "best": {
+          "$ref": "#/$defs/Best"
+        },
+        "runs": {
+          "maximum": 1000000000,
+          "minimum": 0,
+          "title": "Runs",
+          "type": "integer"
+        },
+        "steward": {
+          "title": "Steward",
+          "type": "boolean"
+        },
+        "push": {
+          "title": "Push",
+          "type": "boolean"
+        },
+        "speed": {
+          "enum": [
+            1,
+            2,
+            4
+          ],
+          "title": "Speed",
+          "type": "integer"
+        },
+        "vol": {
+          "$ref": "#/$defs/Volume"
+        },
+        "lastSeen": {
+          "maximum": 1e+150,
+          "minimum": 0,
+          "title": "Lastseen",
+          "type": "number"
+        },
+        "run": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Run"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "rate": {
+          "$ref": "#/$defs/Rate"
+        },
+        "lastParty": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lastparty"
+        },
+        "pendingCards": {
+          "default": 0,
+          "maximum": 500,
+          "minimum": 0,
+          "title": "Pendingcards",
+          "type": "integer"
+        },
+        "atWaylight": {
+          "default": false,
+          "title": "Atwaylight",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "embers",
+        "boons",
+        "unlocked",
+        "best",
+        "runs",
+        "steward",
+        "push",
+        "speed",
+        "vol",
+        "lastSeen",
+        "run",
+        "rate"
+      ],
+      "title": "Player",
+      "type": "object"
+    },
+    "Rate": {
+      "additionalProperties": false,
+      "properties": {
+        "silver": {
+          "maximum": 1e+150,
+          "minimum": 0,
+          "title": "Silver",
+          "type": "number"
+        },
+        "xp": {
+          "maximum": 1e+150,
+          "minimum": 0,
+          "title": "Xp",
+          "type": "number"
+        }
+      },
+      "required": [
+        "silver",
+        "xp"
+      ],
+      "title": "Rate",
+      "type": "object"
+    },
+    "Run": {
+      "additionalProperties": false,
+      "properties": {
+        "party": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Party",
+          "type": "array"
+        },
+        "level": {
+          "maximum": 500,
+          "minimum": 1,
+          "title": "Level",
+          "type": "integer"
+        },
+        "xp": {
+          "maximum": 1e+150,
+          "minimum": 0,
+          "title": "Xp",
+          "type": "number"
+        },
+        "silver": {
+          "maximum": 1e+150,
+          "minimum": 0,
+          "title": "Silver",
+          "type": "number"
+        },
+        "stage": {
+          "maximum": 500,
+          "minimum": 1,
+          "title": "Stage",
+          "type": "integer"
+        },
+        "maxStage": {
+          "maximum": 500,
+          "minimum": 0,
+          "title": "Maxstage",
+          "type": "integer"
+        },
+        "flames": {
+          "maximum": 3,
+          "minimum": 0,
+          "title": "Flames",
+          "type": "integer"
+        },
+        "time": {
+          "maximum": 1e+150,
+          "minimum": 0,
+          "title": "Time",
+          "type": "number"
+        },
+        "camp": {
+          "$ref": "#/$defs/Camp"
+        },
+        "cards": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "maxProperties": 40,
+          "title": "Cards",
+          "type": "object"
+        },
+        "gear": {
+          "additionalProperties": {
+            "additionalProperties": {
+              "$ref": "#/$defs/Item"
+            },
+            "type": "object"
+          },
+          "maxProperties": 6,
+          "title": "Gear",
+          "type": "object"
+        },
+        "kills": {
+          "maximum": 1000000000,
+          "minimum": 0,
+          "title": "Kills",
+          "type": "integer"
+        },
+        "lit": {
+          "maximum": 1000000000,
+          "minimum": 0,
+          "title": "Lit",
+          "type": "integer"
+        },
+        "seed": {
+          "exclusiveMaximum": 2147483648,
+          "minimum": -2147483648,
+          "title": "Seed",
+          "type": "integer"
+        },
+        "tonics": {
+          "maximum": 6,
+          "minimum": 0,
+          "title": "Tonics",
+          "type": "integer"
+        },
+        "pack": {
+          "maximum": 3,
+          "minimum": 0,
+          "title": "Pack",
+          "type": "integer"
+        },
+        "holdCount": {
+          "maximum": 1000000000,
+          "minimum": 0,
+          "title": "Holdcount",
+          "type": "integer"
+        },
+        "relics": {
+          "maximum": 1000000000,
+          "minimum": 0,
+          "title": "Relics",
+          "type": "integer"
+        },
+        "silverMul": {
+          "default": 1,
+          "maximum": 1e+150,
+          "minimum": 0,
+          "title": "Silvermul",
+          "type": "number"
+        },
+        "maxTonics": {
+          "default": 2,
+          "maximum": 6,
+          "minimum": 0,
+          "title": "Maxtonics",
+          "type": "integer"
+        },
+        "d5": {
+          "default": 0,
+          "maximum": 1000000000,
+          "minimum": 0,
+          "title": "D5",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "party",
+        "level",
+        "xp",
+        "silver",
+        "stage",
+        "maxStage",
+        "flames",
+        "time",
+        "camp",
+        "cards",
+        "gear",
+        "kills",
+        "lit",
+        "seed",
+        "tonics",
+        "pack",
+        "holdCount",
+        "relics"
+      ],
+      "title": "Run",
+      "type": "object"
+    },
+    "Volume": {
+      "additionalProperties": false,
+      "properties": {
+        "music": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Music",
+          "type": "number"
+        },
+        "sfx": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Sfx",
+          "type": "number"
+        },
+        "mute": {
+          "title": "Mute",
+          "type": "boolean"
+        },
+        "master": {
+          "default": 1,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Master",
+          "type": "number"
+        },
+        "off": {
+          "additionalProperties": {
+            "type": "boolean"
+          },
+          "maxProperties": 20,
+          "title": "Off",
+          "type": "object"
+        }
+      },
+      "required": [
+        "music",
+        "sfx",
+        "mute"
+      ],
+      "title": "Volume",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "player": {
+      "$ref": "#/$defs/Player"
+    }
+  },
+  "required": [
+    "player"
+  ],
+  "title": "Payload",
+  "type": "object"
+}

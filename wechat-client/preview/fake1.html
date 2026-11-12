@@ -1,0 +1,8 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>Lanternfall · 伪 WebGL1（真 WebGL2 上下文）</title><style>html,body{margin:0;background:#080c14;width:100%;height:100%;overflow:hidden}canvas{display:block;width:100%;height:100%}#error{position:fixed;left:20px;bottom:20px;color:#ffbfb0;white-space:pre-wrap;font:14px monospace;pointer-events:none;max-width:60%}</style><canvas id="game"></canvas><div id="error"></div><script>
+// Simulates WeChat iOS: canvas.getContext('webgl2') works, but the global
+// WebGL2RenderingContext constructor is undefined, so three.js r158 falls back
+// to its WebGL1 code path (GLSL ES 1.00 + #extension GL_OES_standard_derivatives).
+delete window.WebGL2RenderingContext;
+try{Object.defineProperty(window,'WebGL2RenderingContext',{value:undefined,configurable:true});}catch(_){}
+window.addEventListener('error',e=>{document.getElementById('error').textContent+='\n'+e.message;});
+</script><script src="/bundle.js"></script>

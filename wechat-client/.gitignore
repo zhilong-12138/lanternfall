@@ -1,0 +1,6 @@
+dist/
+assets/audio/
+config.local.js
+project.private.config.json
+node_modules/
+tests/.artifacts/

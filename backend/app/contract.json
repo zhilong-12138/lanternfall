@@ -1,0 +1,52 @@
+{
+  "heroes": [
+    "warden",
+    "reaver",
+    "fletcher",
+    "lamplighter",
+    "apothecary",
+    "rimebinder"
+  ],
+  "cards": [
+    "w_hp",
+    "w_hold",
+    "w_bash",
+    "w_rip",
+    "r_cleave",
+    "r_sunder",
+    "r_wind",
+    "r_dmg",
+    "f_volley",
+    "f_aimed",
+    "f_pin",
+    "f_haste",
+    "l_flare",
+    "l_kindle",
+    "l_cinder",
+    "l_dmg",
+    "a_tonic",
+    "a_fire",
+    "a_quick",
+    "a_kit",
+    "b_lance",
+    "b_hoar",
+    "b_shatter",
+    "b_rime",
+    "p_dmg",
+    "p_hp",
+    "p_light",
+    "p_haste",
+    "p_silver",
+    "p_flare",
+    "p_xp"
+  ],
+  "boons": {
+    "dmg": 20,
+    "hp": 20,
+    "silver": 10,
+    "xp": 10,
+    "start": 12,
+    "apothecary": 1,
+    "rimebinder": 1
+  }
+}

@@ -1,0 +1,31 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>Lanternfall · GLES2 受限预览</title><style>html,body{margin:0;background:#080c14;width:100%;height:100%;overflow:hidden}canvas{display:block;width:100%;height:100%}#error{position:fixed;left:20px;bottom:20px;color:#ffbfb0;white-space:pre-wrap;font:14px monospace;pointer-events:none;max-width:60%}</style><canvas id="game"></canvas><div id="error"></div><script>
+const q=new URLSearchParams(location.search);
+const mode=q.get('ext')||'all';
+const glm2=/^webgl2|experimental-webgl2$/;
+const groups={
+  half:['EXT_color_buffer_half_float','EXT_color_buffer_float','OES_texture_half_float','OES_texture_half_float_linear','OES_texture_float','OES_texture_float_linear'],
+  uint:['OES_element_index_uint'],
+  deriv:['OES_standard_derivatives'],
+  vao:['OES_vertex_array_object'],
+  depth:['EXT_frag_depth','EXT_shader_texture_lod','WEBGL_depth_texture'],
+  draw:['WEBGL_draw_buffers','WEBGL_multi_draw'],
+  aniso:['EXT_texture_filter_anisotropic','OES_standard_derivatives']
+};
+let blocked=[];
+if(mode==='all'){ blocked=Object.values(groups).flat(); }
+else if(mode!=='none'){ mode.split(',').forEach(k=>{ if(groups[k]) blocked=blocked.concat(groups[k]); }); }
+window.__blockedExt=blocked;
+const errBox=document.getElementById('error');
+window.addEventListener('error',e=>{errBox.textContent+='\n'+e.message;});
+const orig=HTMLCanvasElement.prototype.getContext;
+HTMLCanvasElement.prototype.getContext=function(type,...rest){
+  if(glm2.test(String(type)))return null;
+  const ctx=orig.call(this,type,...rest);
+  if(ctx&&!ctx.__patched&&String(type).startsWith('webgl')){
+    ctx.__patched=true;
+    const ge=ctx.getExtension.bind(ctx);
+    ctx.getExtension=function(name){ if(blocked.includes(name))return null; return ge(name); };
+  }
+  return ctx;
+};
+</script><script src="/bundle.js"></script>

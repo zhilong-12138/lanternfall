@@ -1,0 +1,10 @@
+{
+  "name": "lanternfall-wechat",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "test": "node tools/build.mjs && node --test tests/*.test.cjs",
+    "preview": "node tools/build.mjs && node tools/preview.mjs"
+  }
+}

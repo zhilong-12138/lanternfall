@@ -5,3 +5,4 @@ shots/
 sfxwork/
 work/
 *.log
+!wechat-client/game.js

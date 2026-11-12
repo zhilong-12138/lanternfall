@@ -1,5 +1,14 @@
 # LANTERNFALL
 
+## 微信小游戏版本
+
+新增横屏小游戏前端与 Python/MySQL 后端：
+
+- [wechat-client/README.md](wechat-client/README.md)：构建、微信开发者工具导入、触摸操作与存档说明。
+- [backend/README.md](backend/README.md)：Docker MySQL、Python 服务、微信登录、存档接口和测试。
+
+`wechat-client` 构建复用下方网页版本的 `src/`；原网页入口保留。
+
 A single-page three.js idle battler. A party of heroes holds a lantern-lit line against waves of monsters that come out of the dark. Fights run on their own: you pick the party, spend the loot and fire flares at the right moment.
 
 **Play:** https://loktar00.github.io/lanternfall/

@@ -1,0 +1,66 @@
+{
+  "description": "Lanternfall landscape WeChat minigame",
+  "projectname": "lanternfall",
+  "appid": "wx191f1b2b164c3cf4",
+  "compileType": "game",
+  "libVersion": "latest",
+  "setting": {
+    "es6": true,
+    "minified": true,
+    "urlCheck": true,
+    "postcss": false,
+    "compileWorklet": false,
+    "uglifyFileName": false,
+    "uploadWithSourceMap": true,
+    "enhance": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "localPlugins": false,
+    "disableUseStrict": false,
+    "useCompilerPlugins": false,
+    "condition": false,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
+  },
+  "packOptions": {
+    "ignore": [
+      {
+        "value": "tools",
+        "type": "folder"
+      },
+      {
+        "value": "tests",
+        "type": "folder"
+      },
+      {
+        "value": "preview",
+        "type": "folder"
+      },
+      {
+        "value": "README.md",
+        "type": "file"
+      },
+      {
+        "value": "VALIDATION.md",
+        "type": "file"
+      },
+      {
+        "value": "config.local.example.js",
+        "type": "file"
+      },
+      {
+        "value": "package.json",
+        "type": "file"
+      }
+    ],
+    "include": []
+  },
+  "simulatorPluginLibVersion": {},
+  "isGameTourist": false,
+  "editorSetting": {}
+}
